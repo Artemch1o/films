@@ -12,6 +12,7 @@
 <body>
     <main>
 
+
         <div class="mask">
             <div class="loader"></div>
         </div>
@@ -19,12 +20,24 @@
         <header class="header">
             <h2>My Favorite Movies</h2>
         </header>
-        <div class="search">
-            <form class="search__form">
-                <input type="text" class="search-input" placeholder="Input movie" />
-            </form>
+
+        <div class="tabs">
+            <button class="tabs__btn tabs__btn--first">I can watch films</button>
+            <button class="tabs__btn tabs__btn--second active">search films</button>
         </div>
-        <div class="movies">
+
+        <div class="films__container films__container--searched ">
+            <div class="search">
+                <form class="search__form">
+                    <input type="text" class="search-input" placeholder="Input movie" />
+                </form>
+            </div>
+            <div class="movies movie--searched">
+            </div>
+        </div>
+        <div class="films__container films__container--watch">
+            <div class="movies movie--watched">
+            </div>
         </div>
 
     </main>

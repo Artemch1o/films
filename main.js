@@ -1,7 +1,12 @@
-const containerFilms = document.querySelector(".movies");
+const containerFilmsSearched = document.querySelector(".movie--searched");
 const searchForm = document.querySelector(".search__form");
 const searchInput = document.querySelector(".search-input");
 const mask = document.querySelector(".mask");
+const tabs = document.querySelector(".tabs");
+const tabsBtnList = Array.from(document.querySelectorAll(".tabs__btn"));
+const filmsContainersList = Array.from(
+  document.querySelectorAll(".films__container")
+);
 
 const url =
   "https:api.themoviedb.org/3/search/movie?api_key=98f92c617ad098219567563b0fd469c0&query=";
@@ -17,6 +22,33 @@ searchForm.addEventListener("submit", (event) => {
   event.preventDefault();
   getFilms(searchInput.value);
 });
+
+tabs.addEventListener("click", toggleActiveTabBtn);
+
+function toggleActiveTabBtn(event) {
+  const tabBtn = event.target.closest(".tabs__btn");
+  const activeBtn = tabsBtnList.find((element) =>
+    element.classList.contains("active")
+  );
+  if (!tabBtn.classList.contains("active")) {
+    activeBtn.classList.remove("active");
+    tabBtn.classList.add("active");
+  }
+  if (activeBtn.classList.contains("tabs__btn--first")) {
+    filmsContainersList[1].classList.add("unvisible");
+    filmsContainersList[0].classList.remove("unvisible");
+  } else if (!activeBtn.classList.contains("tabs__btn--first")) {
+    filmsContainersList[0].classList.add("unvisible");
+    filmsContainersList[1].classList.remove("unvisible");
+  }
+}
+
+function findUnsibileContainer() {
+  const unvisibleContainer = filmsContainersList.find((el) =>
+    el.classList.contains("unvisible")
+  );
+  return unvisibleContainer;
+}
 
 document.addEventListener("DOMContentLoaded", () => {
   if (localStorage.getItem("films") !== null) {
@@ -38,7 +70,7 @@ async function getFilms(item) {
     renderFilms(filmsArray);
   } catch (error) {
     const statusCode = error.response ? error.response.status : "Unknown";
-    containerFilms.innerHTML =
+    containerFilmsSearched.innerHTML =
       "Error (status code: " + statusCode + "): " + error.message;
     console.log(statusCode);
   } finally {
@@ -50,7 +82,7 @@ function renderFilms(item) {
   const films = item;
   films.forEach((element) => {
     const film = createMovie(element);
-    containerFilms.append(film);
+    containerFilmsSearched.append(film);
   });
 }
 

@@ -28,6 +28,40 @@ main {
   margin-right: 10px;
 }
 
+.tabs {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0 auto;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.tabs__btn {
+  border: 2px solid rgb(227, 213, 213);
+  border-radius: 10px;
+  width: 320px;
+  height: 40px;
+  background-color: rgb(142, 131, 131);
+  font-weight: 700;
+  font-size: 18px;
+  color: white;
+  cursor: pointer;
+}
+.tabs__btn.active {
+  background-color: green;
+}
+.films__container.unvisible {
+  position: absolute;
+  pointer-events: none;
+  visibility: hidden;
+}
+
 .btn {
   border: none;
   width: 100px;
@@ -118,7 +152,6 @@ main {
   border: 1px solid #e7e7e7;
   width: 100%;
   height: 40px;
-  padding: 0 10px;
   margin-bottom: 20px;
   border-radius: 10px;
 }/*# sourceMappingURL=style.css.map */
