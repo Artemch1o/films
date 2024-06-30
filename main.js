@@ -96,6 +96,7 @@ function createMovie(film) {
         ${film.original_title}
     </div>
     <span class="movie-overview">${film.overview}</span>
-</div>`;
+</div>
+<button class = "movie__watch-btn">Watch</button>`;
   return movie;
 }

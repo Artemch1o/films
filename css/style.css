@@ -22,9 +22,8 @@ main {
           align-items: center;
   padding: 20px;
 }
-
-.header-logo {
-  max-width: 50px;
+.header__logo {
+  max-width: 500px;
   margin-right: 10px;
 }
 
@@ -72,11 +71,9 @@ main {
   cursor: pointer;
   background: #efefef;
 }
-
 .btn:hover {
   opacity: 0.7;
 }
-
 .btn_green {
   background: #37df5c;
 }
@@ -91,12 +88,19 @@ main {
   border: 2px solid #efefef;
   padding: 10px;
   border-radius: 10px;
+  position: relative;
 }
-
-.movie-accept {
-  margin-right: 10px;
+.movie__watch-btn {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background-color: rgb(155, 133, 133);
+  border: 1px solid rgb(193, 152, 152);
+  color: white;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
 }
-
 .movie-img {
   width: 200px;
   height: 200px;
@@ -104,7 +108,6 @@ main {
      object-fit: cover;
   border-radius: 50%;
 }
-
 .movie-name {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -115,12 +118,10 @@ main {
   font-size: 20px;
   margin-bottom: 20px;
 }
-
 .movie-overview {
   display: block;
   margin-bottom: 20px;
 }
-
 .movie-buttons {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -132,17 +133,14 @@ main {
       -ms-flex-pack: center;
           justify-content: center;
 }
-
 .movie-buttons-watched {
   color: #fff;
   background: #1eb4c3;
 }
-
 .movie-buttons-watched__icon {
   width: 15px;
   margin-left: 10px;
 }
-
 .movie-buttons-delete {
   color: #fff;
   background: #ff2a2a;
