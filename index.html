@@ -11,8 +11,6 @@
 
 <body>
     <main>
-
-
         <div class="mask">
             <div class="loader"></div>
         </div>
@@ -22,8 +20,13 @@
         </header>
 
         <div class="tabs">
-            <button class="tabs__btn tabs__btn--first">I can watch films</button>
-            <button class="tabs__btn tabs__btn--second active">search films</button>
+            <button class="tabs__btn tabs__btn--first active">I can watch films</button>
+            <button class="tabs__btn tabs__btn--second">search films</button>
+        </div>
+
+        <div class="films__container films__container--watch">
+            <div class="movies movie--watched">
+            </div>
         </div>
 
         <div class="films__container films__container--searched ">
@@ -35,14 +38,9 @@
             <div class="movies movie--searched">
             </div>
         </div>
-        <div class="films__container films__container--watch">
-            <div class="movies movie--watched">
-            </div>
-        </div>
 
     </main>
-
+    <script src="main.js"></script>
 </body>
-<script src="main.js"></script>
 
 </html>

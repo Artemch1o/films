@@ -1,4 +1,5 @@
 const containerFilmsSearched = document.querySelector(".movie--searched");
+const containerFilmsWatched = document.querySelector(".movie--searched");
 const searchForm = document.querySelector(".search__form");
 const searchInput = document.querySelector(".search-input");
 const mask = document.querySelector(".mask");
@@ -15,6 +16,7 @@ const urlImage = "https://image.tmdb.org/t/p/w300_and_h450_bestv2";
 
 const state = {
   films: "",
+  watchedFilms: [],
 };
 
 searchForm.addEventListener("submit", (event) => {
@@ -49,15 +51,6 @@ function findUnsibileContainer() {
   );
   return unvisibleContainer;
 }
-
-document.addEventListener("DOMContentLoaded", () => {
-  if (localStorage.getItem("films") !== null) {
-    mask.classList.add("visible");
-    const films = JSON.parse(localStorage.getItem("films"));
-    renderFilms(films);
-    mask.classList.remove("visible");
-  }
-});
 
 async function getFilms(item) {
   try {
@@ -98,5 +91,26 @@ function createMovie(film) {
     <span class="movie-overview">${film.overview}</span>
 </div>
 <button class = "movie__watch-btn">Watch</button>`;
+  const watchBtn = movie.querySelector(".movie__watch-btn");
+  watchBtn.addEventListener("click", () => {
+    state.watchedFilms.push(film);
+    localStorage.setItem("watchedFilms", JSON.stringify(state.watchedFilms));
+    renderFilms(state.watchedFilms, containerFilmsWatched);
+  });
   return movie;
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  if (localStorage.getItem("films") !== null) {
+    mask.classList.add("visible");
+    const films = JSON.parse(localStorage.getItem("films"));
+    renderFilms(films);
+    mask.classList.remove("visible");
+  }
+  if (localStorage.getItem("watchedFilms") !== null) {
+    mask.classList.add("visible");
+    const watchedFilms = JSON.parse(localStorage.getItem("watchedFilms"));
+    renderFilms(watchedFilms);
+    mask.classList.remove("visible");
+  }
+});
